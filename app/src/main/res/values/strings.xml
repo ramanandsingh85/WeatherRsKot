@@ -1,3 +1,53 @@
 <resources>
-    <string name="app_name">WeatherRSKot</string>
+    <string name="app_name">Weather RSKot</string>
+    <string name="view_weather">View Weather</string>
+    <string name="degree_celsius_symbol">°C</string>
+    <string name="description_weather_condition_icon">weather condition icon</string>
+    <string name="label_humidity">Humidity</string>
+    <string name="label_pressure">Pressure</string>
+    <string name="label_visibility">Visibility</string>
+    <string name="label_sunrise">Sunrise</string>
+    <string name="label_sunset">Sunset</string>
+
+    <string name="fine_location_permission_rationale">The fine location permission is needed for core functionality.</string>
+    <string name="fine_permission_denied_explanation">Fine location permission was denied, but is needed for core functionality.</string>
+
+    <string name="background_location_permission_rationale">The background location permission is needed for enhanced functionality.</string>
+    <string name="background_permission_denied_explanation">Background location permission was denied but needed for enhanced functionality.</string>
+
+
+    <string name="settings">Settings</string>
+    <string name="ok">OK</string>
+
+    <string name="fine_location_access_rationale_title_text">Welcome to the Background Location Weather app!</string>
+
+    <string name="fine_location_access_rationale_details_text">This app allows you to receive location updates while using the app.
+        \n\n
+        In order for this feature to work, please approve access to your location.
+    </string>
+
+    <string name="background_location_access_rationale_title_text">Improve location accuracy!</string>
+
+    <string name="background_location_access_rationale_details_text">
+        Since we have a valid use case for background location updates, we should request updates while app is in the background.
+        \n\n
+        For this app, we would like to keep you updated with current weather updates for your location so you should click \"Allow all the time\" below.
+        \n\n
+    </string>
+
+    <string name="enable_fine_location_button_text">Approve Location Access</string>
+    <string name="enable_background_location_button_text">Approve Background Location Access</string>
+
+    <string name="start_receiving_location">Start Receiving Location Updates</string>
+    <string name="stop_receiving_location">Stop Receiving Location Updates</string>
+
+    <string name="enhance_with_background_location_button_text">Enhance with Background Location</string>
+
+    <!-- NEW ones -->
+    <string name="request_updates">Request updates</string>
+    <string name="remove_updates">Remove updates</string>
+    <string name="unknown_location">Unknown location</string>
+
+    <string name="batched_location_updates">Batched location updates</string>
+    <string name="emptyLocationDatabaseMessage">To start receiving location updates, please click the button below!</string>
 </resources>

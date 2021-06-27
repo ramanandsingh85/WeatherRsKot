@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/sunriseTextView"
+        style="@style/LabelStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_sunrise"
+        app:layout_constraintEnd_toEndOf="@id/sunriseImageView"
+        app:layout_constraintStart_toStartOf="@id/sunriseImageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/sunriseImageView"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="36dp"
+        android:src="@drawable/ic_sunrise"
+        app:layout_constraintEnd_toStartOf="@id/sunsetImageView"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sunriseTextView" />
+
+    <TextView
+        android:id="@+id/sunriseTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/sunriseImageView"
+        app:layout_constraintStart_toStartOf="@id/sunriseImageView"
+        app:layout_constraintTop_toBottomOf="@+id/sunriseImageView"
+        tools:text="5:11 AM" />
+
+    <TextView
+        android:id="@+id/sunsetTextView"
+        style="@style/LabelStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_sunset"
+        app:layout_constraintEnd_toEndOf="@id/sunsetImageView"
+        app:layout_constraintStart_toStartOf="@id/sunsetImageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/sunsetImageView"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="36dp"
+        android:src="@drawable/ic_sunset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sunriseImageView"
+        app:layout_constraintTop_toBottomOf="@+id/sunsetTextView" />
+
+    <TextView
+        android:id="@+id/sunsetTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/sunsetImageView"
+        app:layout_constraintStart_toStartOf="@id/sunsetImageView"
+        app:layout_constraintTop_toBottomOf="@+id/sunsetImageView"
+        tools:text="6:47 PM" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

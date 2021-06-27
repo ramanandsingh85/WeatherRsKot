@@ -1,7 +1,7 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 30
@@ -12,33 +12,111 @@ android {
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0"
-
+        versionName "1.0." + getDate()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
 
+        buildConfigField "String", "BASE_URL", "\"" + getBaseUrl() + "\""
+        buildConfigField "String", "APP_ID", "\"" + getAppId() + "\""
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$core_version"
+    implementation "androidx.core:core-ktx:$core_version"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.preference:preference:$core_version"
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.5.0'
-    implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    kapt 'com.android.databinding:compiler:3.1.4'
+
+    //Google current location library
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+
+    //background task schedular: WorkManager
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    // material design
+    implementation 'com.google.android.material:material:1.2.0-alpha04'
+
+    // network call related libraries
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version" // REST API calling library
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version" // JSON parsing library
+    implementation('com.github.ihsanbal:LoggingInterceptor:3.0.0') { // HTTP pretty log printing library
+        exclude group: 'org.json', module: 'json'
+    }
+
+    // glide image loading library
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
+    //JUnit test
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // Optional -- Robolectric environment
+    testImplementation('androidx.test:core:1.0.0')
+    // Optional -- Mockito framework
+    testImplementation("org.mockito:mockito-core:1.10.19")
+    //for testing retrofit.
+    androidTestImplementation("com.squareup.okhttp3:mockwebserver:3.14.4")
+
+    // optional - Test helpers
+    androidTestImplementation("androidx.work:work-testing:$work_version")
+    debugImplementation("androidx.fragment:fragment-testing:$fragment_version")
+}
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyMMdd')
+    return formattedDate
+}
+
+def getBaseUrl() {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    String baseUrl = properties.getProperty("base_url")
+    if(baseUrl==null)
+        throw new GradleException("Add 'base_url' field at local.properties file. For more details: https://github.com/hasancse91/weather-app-android-mvvm/blob/master/README.md")
+
+    return baseUrl
+}
+
+def getAppId() {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    String appId = properties.getProperty("app_id")
+    if(appId==null)
+        throw new GradleException("Add 'app_id' field at local.properties file. For more details: https://github.com/hasancse91/weather-app-android-mvvm/blob/master/README.md")
+
+    return appId
 }
