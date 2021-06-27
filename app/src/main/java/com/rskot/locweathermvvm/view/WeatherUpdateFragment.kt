@@ -109,7 +109,11 @@ class WeatherUpdateFragment : Fragment() {
         })
     }
 
-    private fun setWeatherInfo(weatherData: WeatherData) {
+    /**
+     * Method visibility should be private, temporary making is public for testing purpose
+     * TODO: make is private after testing
+     */
+    fun setWeatherInfo(weatherData: WeatherData) {
         outputGroup.visibility = View.VISIBLE
         errorMessageTextView.visibility = View.GONE
 
