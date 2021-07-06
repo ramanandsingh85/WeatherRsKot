@@ -10,7 +10,7 @@ Kotlin, MVVM, Retrofit, WorkManager, BackgroundLocation, BroadcastReceiver, Loca
 1. Clone the code in the local machine.
 
 ```bash
-git clone https://github.com/JAkutenshi/UMLDesignToolPluginProj
+git clone https://github.com/ramanandsingh85/WeatherRsKot.git
 ```
 2. Define openweathermap required credentials in local.properties as following:
 
