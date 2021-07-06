@@ -39,8 +39,3 @@ app_id=YOUR_OWN_APP_ID
 3. Need to employ an intelligent algorithm for location usage so that it is always accurate whether the user is moving or stand still.
 4 Need to optimize server calls in a way to reduce if a user is a standstill for some time.
 5. Need to have a notification about weather updates to keep the user engaged and benefitted from current weather condition alerts.
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
